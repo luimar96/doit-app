@@ -10,7 +10,8 @@
 
         <div>
         <button class="login-btn" aria-placeholder="login">
-            <router-link to="/about" class="login-text">LOGIN</router-link></button>
+            <router-link to="/about" class="login-text">LOGIN</router-link>
+        </button>
         </div>
         <router-view />
         <HelloWorld  />
@@ -44,21 +45,9 @@ export default ({
   border-radius: 1em;
   margin-top: 1em;
   background-color:#FAF9F8 ;
-  box-shadow: 0px 3px 8px 1px #888888;
+  box-shadow: 0 3px 4px 0px gray;
 }
 
-
-img{
-  width: 25em;
-  margin-top:0;
-}
-.login-container{
-  margin-top: 10em;
-}
-h1{
-  font-size: 5em;
-  margin-bottom: 0;
-}
 ::placeholder {
   font-size: 20px;
   padding-left: 4em;
