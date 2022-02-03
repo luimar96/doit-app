@@ -5,6 +5,8 @@
   </div>
   <div class="column login-container">
    <Login/>
+   <searchbar/>
+
   </div>
 </div>
 </template>
@@ -13,11 +15,15 @@
 // @ is an alias to /src
 import Login from "../components/Login-page/Login.vue";
 import Picture from "../components/Login-page/Picture.vue"
+import Searchbar from '../components/Searchbar.vue';
+//import HelloWorld from "@/components/HelloWorld.vue";
+
 export default {
   name: "Home",
   components: {
     Login,
-    Picture
+    Picture,
+    Searchbar
   },
 };
 </script>

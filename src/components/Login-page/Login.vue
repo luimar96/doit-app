@@ -5,7 +5,7 @@
         </div>
 
         <div class="">
-        <input type="text" name="password" class="login-input" id="name" placeholder="Password..">
+        <input type="password" name="password" class="login-input" id="name" placeholder="Password..">
         </div>
 
         <div>
@@ -21,7 +21,7 @@
 
 
 export default ({
-   
+
 })
 </script>
 <style scoped>
@@ -31,8 +31,8 @@ export default ({
   border-radius: 1em;
   margin-top: 2em;
   background-color: #BEB3EE;
-  box-shadow: 0 3px 4px 0px gray;
-  
+  box-shadow: 0px 3px 8px 1px #888888;
+
 }
 .login-text{
   font-size: 22px;

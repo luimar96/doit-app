@@ -1,0 +1,23 @@
+<template>
+    <div>
+        <input type="text" placeholder="..Search input">
+    </div>
+
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+input{
+      width: 497px;
+  height: 81px;
+  border-radius: 1em;
+  margin-top: 1em;
+  background-color:#FAF9F8 ;
+  box-shadow: 0px 3px 8px 1px #888888;
+}
+</style>
