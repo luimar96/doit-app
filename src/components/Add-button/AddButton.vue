@@ -1,0 +1,27 @@
+<template>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div>
+    <button class="add-btn">
+        <i class="fa fa-plus"></i>
+    </button>
+</div> 
+</template>
+<script>
+export default {
+    
+}
+</script>
+<style scoped>
+.add-btn{
+    width: 242px;
+    height: 90px;
+    border-radius: 1em;
+    border: none;
+    background-color: #BEB3EE;
+    box-shadow: 0px 3px 8px 1px #888888;
+}
+.fa-plus{
+    font-size: 4em;
+    opacity: 50%;
+}
+</style>
