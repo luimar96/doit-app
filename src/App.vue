@@ -1,5 +1,5 @@
 <template>
-  <div id="nav" v-if="this.$router.name != '/'">
+  <div id="nav" v-if="this.$router.name === '/'">
     <router-link to="/">Home</router-link> |
   </div>
   <div class="page">
