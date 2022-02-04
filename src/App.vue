@@ -3,10 +3,20 @@
     <router-link to="/">Home</router-link> |
   </div>
   <div class="page">
+    <Navbar/>
   <router-view />
   </div>
 </template>
+<script>
+import Navbar from "./components/navBar.vue"
+ export default { 
+  components: {
+    Navbar
 
+    
+  },
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
