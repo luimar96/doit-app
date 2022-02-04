@@ -1,17 +1,17 @@
 <template>
   <div class="Overview">
     <h1>Overview Page!</h1>
+    <searchbar />
+
   </div>
-  <div></div>
 </template>
 <script>
-
+import Searchbar from "../components/Searchbar.vue";
 export default {
-  components:{
-   
-
+  components: {
+    Searchbar,
   }
-  
+
 }
 </script>
 <style scoped>
