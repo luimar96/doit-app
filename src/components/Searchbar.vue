@@ -7,7 +7,7 @@
 
 <script>
 export default {
-
+   /*
     data: () => ({
         search: '',
         resources: [],
@@ -26,14 +26,15 @@ export default {
         checkname() {
             console.log(`check name: ${this.search}`);
         }
-    },
+    },*/
 }
+/*
 function myfunc(){
     var input;
     input = document.getElementById(search);
     filter = input.value.toUpperCase();
 
-}
+}*/
 
 </script>
 
