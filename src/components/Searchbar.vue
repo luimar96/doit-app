@@ -12,6 +12,7 @@ export default {
         search: ''
 
     }),
+
     metods: {
         checkname() {
             console.log(`check name: ${this.search}`);
