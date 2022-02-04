@@ -1,14 +1,25 @@
 <template>
     <div>
-        <input type="text" placeholder="..Search input">
+        <input type="text" v-model="search"  placeholder="..Search input">
     </div>
 
 </template>
 
 <script>
 export default {
+    data: () => ({
+        search = ''
+    }),
+    metods: {
+        checkname() {
+            console.log(`check name: ${this.search}`);
+        }
+    }
 
 }
+
+
+
 </script>
 
 <style>
