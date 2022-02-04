@@ -9,19 +9,31 @@
 export default {
 
     data: () => ({
-        search: ''
+        search: '',
+        resources: [],
 
     }),
-
+    computed: {
+            filtertickets(){
+                if(this.search){
+                    return this.resources.filter((item) => {
+                        return item.ÄNDRATILLNÅGOT.startsWith(this.search);
+                    })
+                }
+            }
+    },
     metods: {
         checkname() {
             console.log(`check name: ${this.search}`);
         }
-    }
+    },
+}
+function myfunc(){
+    var input;
+    input = document.getElementById(search);
+    filter = input.value.toUpperCase();
 
 }
-
-
 
 </script>
 
