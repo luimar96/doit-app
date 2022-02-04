@@ -19,9 +19,14 @@ export default {
     border: none;
     background-color: #BEB3EE;
     box-shadow: 0px 3px 8px 1px #888888;
+    cursor: pointer;
 }
 .fa-plus{
     font-size: 4em;
     opacity: 50%;
+}
+.add-btn:hover {background-color: #9c8beb}
+.add-btn:active {
+  transform: translateY(4px);
 }
 </style>
