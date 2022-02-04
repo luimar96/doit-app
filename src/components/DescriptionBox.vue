@@ -1,7 +1,7 @@
 <template>
 <form>
 	<label for="description">description</label>
-	<textarea rows="4" cols="50"/>
+	<textarea v-model="TextBoxInfo" rows="4" cols="50"/>
 </form>
 
 </template>
