@@ -7,8 +7,10 @@
 
 <script>
 export default {
+
     data: () => ({
-        search = ''
+        search: ''
+
     }),
     metods: {
         checkname() {
