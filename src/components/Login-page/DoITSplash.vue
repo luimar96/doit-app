@@ -1,8 +1,10 @@
 <template>
     <div class="DoIT-Splash-Container">
         <img src="@/assets/people.png" alt="people" />
-        <h1 >DoIT</h1>           
-        <p>Helps you to better manage your task</p>         
+        <div class="text">
+            <h1 class="app-name" >DoIT</h1>           
+            <p class="flavour-text">Helps you to better manage your task</p>     
+        </div>    
     </div>
 </template>
 
@@ -21,20 +23,23 @@ img{
     width: 100%;
     margin-top: auto;
 }
-h1{
+.text{
     width: 100%;
-   font-size:10vw;
-   margin:0;
-   margin-left: 7vw;
+    margin-bottom: auto;
 }
-p{
+.app-name{
+    width: 100%;
+    font-size: 700%;
+    margin:0;
+    padding-left: 7vw;
+}
+.flavour-text{
     margin: 0px;
-    font-size: 2.5vw;
+    font-size: 200%;
     width: 100vw;
     opacity: 50%;
     margin-left: 3vw;
     font-weight: bold;
-    margin-bottom: auto;
 }
 .DoIT-Splash-Container{
     display: flex;

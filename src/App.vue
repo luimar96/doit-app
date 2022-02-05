@@ -1,15 +1,20 @@
 <template>
-  <div id="nav" v-if="this.$router.name === '/'">
-    <router-link to="/">Home</router-link> |
+
+  <div class="nav" v-if="this.$route.path !== '/'">
+      <Navbar/>
   </div>
+
   <div class="page">
-    <Navbar/>
-  <router-view />
+    <router-view />
   </div>
+
 </template>
 <script>
 import Navbar from "./components/navBar.vue"
  export default { 
+    data:() => ({
+    isLoggedIn: false
+  }),
   components: {
     Navbar
 
@@ -25,8 +30,10 @@ import Navbar from "./components/navBar.vue"
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.nav {
+  height: 100px;
+  width: 100vw;
+  z-index: 10;
 }
 
 #nav a {
@@ -41,12 +48,15 @@ import Navbar from "./components/navBar.vue"
 body{
  overflow-x: hidden;
  overflow-y: auto;
+ width: 100vw;
+ height: 100vh;
  margin: 0px;
 }
 
 .page{
+  z-index: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 100px);
 }
 
 ::-webkit-scrollbar {
