@@ -1,8 +1,5 @@
 <template>
-    <div>
-        <input type="text" v-model="search"  placeholder="..Search input">
-    </div>
-
+        <input type="text" v-model="search"  placeholder="Search...">
 </template>
 
 <script>
@@ -40,11 +37,18 @@ function myfunc(){
 
 <style>
 input{
-      width: 497px;
-  height: 81px;
-  border-radius: 1em;
-  margin-top: 1em;
-  background-color:#FAF9F8 ;
-  box-shadow: 0px 3px 8px 1px #888888;
+    width: 100%;
+    height: 80px;
+    border: #7E69DF solid 1px;
+    border-radius: 15px;
+    margin: auto 0px auto 0px;
+    padding: 0px 20px 0px 20px;
+    background-color:#FAF9F8 ;
+    box-shadow: 0px 3px 8px 1px #888888;
+    font-size: 25px;
+}
+
+input:focus{
+    outline: #7E69DF solid 2px;
 }
 </style>

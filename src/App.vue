@@ -31,6 +31,8 @@ import Navbar from "./components/navBar.vue"
 }
 
 .nav {
+  position: sticky;
+  top: 0px;
   height: 100px;
   width: 100vw;
   z-index: 10;
