@@ -1,11 +1,36 @@
 <template>
-    <div>
-        <input type="text" v-model="search"  placeholder="..Search input">
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+        <input type="text" v-model="search" class="form-control"  placeholder="..Search input">
+
+            </div>
+        </div>
     </div>
+    <table class="table table-striped">
+        <tr class="bg-info">
+            <th class="bg-info" data-colname="name" data-order="desc">name</th>
+        </tr>
+    </table>
+    <tbody id="myTable">
+
+    </tbody>
 
 </template>
 
 <script>
+var testArray = [{'name': 'test1'},{'name': 'äpple'},{'name': 'päron'}],
+
+buildtable(testArray)
+function buildtable(data){
+    var table = document.getElementById('myTable')
+    table.innerHTML = ''
+    for(var i = 0; i < data.lenght i++)
+    {
+        var row = 
+
+    }
+}
 export default {
 
     data: () => ({
