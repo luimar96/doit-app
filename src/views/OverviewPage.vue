@@ -1,17 +1,12 @@
 <template>
-  <div class="container">
+  <div class="app">
     <div class="grid-choices">
       <Searchbar class="searchbar"/>
       <AddButton class="addbutton"/>
     </div>
     <ProjectGrid/>
     
-    <!--<button @click="isOpen = true">Show Modal</button>
-    <transition name="fade" apper>
-    <modal :open="isOpen" @close="isOpen = !isOpen">
-      <p>Lorem ipsumaihgirgpwgjrowjrophgwrhhrwhrwhrwwrhwrhrhw</p>
-    </modal>
-    </transition> -->
+   
   </div>
   
 </template>
@@ -20,19 +15,16 @@
 import AddButton from "../components/Buttons/AddButton.vue"
 import Searchbar from "../components/Searchbar.vue"
 import ProjectGrid from "../components/ProjectGrid.vue"
-//import {ref} from "vue"
+
 
 export default {
   components:{
     AddButton,
     Searchbar,
-    ProjectGrid
+    ProjectGrid,
+    
   },
-  setup () {
-      const isOpen = (false) //Ref(false)
-
-      return { isOpen }
-    },
+  
   data:() => ({
     }),
 }

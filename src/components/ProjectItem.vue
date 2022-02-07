@@ -1,15 +1,22 @@
 
 <template>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-     <div class="container" >     
+     <div class="container" @click="isOpen = true" >     
         <div class="dot"><i class="fa fa-folder"></i>
         <i class="fa fa-ellipsis-h"></i></div>
         <div class="project-name">           
                <p>{{projectName}} </p>   
         </div>     
-    </div>     
+    </div>   
+    <transition name="fade" apper>
+    <modal :open="isOpen" @close="isOpen = !isOpen">
+      <p>Lorem ipsumaihgirgpwgjrowjrophgwrhhrwhrwhrwwrhwrhrhw</p>
+    </modal>
+    </transition>   
 </template>
 <script>
+import {ref} from "vue"
+import Modal from "../views/Modal.vue"
 export default {
     props: {
         projectName :{
@@ -18,7 +25,13 @@ export default {
         }
 
     },
+     setup () {
+      const isOpen = ref(false)
+
+      return { isOpen }
+    },
     components: {
+        Modal
         
     },
    
