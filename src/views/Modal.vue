@@ -4,7 +4,6 @@
         <div class="vue-modal-content">
             <task-button></task-button>
             <add-button></add-button>
-
             <slot/>
             <button type="button" @click="$emit('close')">Close</button>
         </div>

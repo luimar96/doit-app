@@ -1,34 +1,54 @@
 <template>
   <div class="app">
-    <h1>Overview Page!</h1>
-    <add-button></add-button>
-    <button @click="isOpen = true">Show Modal</button>
-    <transition name="fade" apper>
-    <modal :open="isOpen" @close="isOpen = !isOpen">
-      <p>Lorem ipsumaihgirgpwgjrowjrophgwrhhrwhrwhrwwrhwrhrhw</p>
-    </modal>
-    </transition>
+    <div class="grid-choices">
+      <Searchbar class="searchbar"/>
+      <AddButton class="addbutton"/>
+    </div>
+    <ProjectGrid/>
+    
+   
   </div>
   
 </template>
+
 <script>
 import AddButton from "../components/Buttons/AddButton.vue"
-import Modal from "../views/Modal.vue"
-import {ref} from "vue"
+import Searchbar from "../components/Searchbar.vue"
+import ProjectGrid from "../components/ProjectGrid.vue"
+
 
 export default {
   components:{
     AddButton,
-    Modal,
+    Searchbar,
+    ProjectGrid,
+    
   },
-  setup () {
-      const isOpen = ref(false)
-
-      return { isOpen }
-    },
+  
   data:() => ({
     }),
 }
 </script>
+
 <style scoped>
+
+.grid-choices{
+  padding: 50px 50px 20px 50px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+.searchbar{
+  width: 60vw;
+  min-width: 200px;
+  margin-right: 25px;
+}
+
+.addbutton{
+  width: 30vw;
+  margin-left: 25px;
+}
+
 </style>
+
