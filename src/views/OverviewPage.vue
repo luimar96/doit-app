@@ -1,7 +1,6 @@
 <template>
   <div class="app">
     <h1>Overview Page!</h1>
-<<<<<<< HEAD
     <add-button></add-button>
     <button @click="isOpen = true">Show Modal</button>
     <transition name="fade" apper>
@@ -29,19 +28,6 @@ export default {
     },
   data:() => ({
     }),
-=======
-    <Searchbar />
-  </div>
-</template>
-<script>
-import Searchbar from "../components/Searchbar.vue";
-
-
-export default {
-  components: {
-    Searchbar
-  }
->>>>>>> fc29197b915a81ea72c0b690e2f139edb827fce3
 }
 </script>
 <style scoped>
