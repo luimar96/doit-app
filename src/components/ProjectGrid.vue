@@ -1,18 +1,30 @@
 <template>
-	<div class="project-grid">
-		<div class="grid-item"/>
-		<div class="grid-item"/>
-		<div class="grid-item"/>
-		<div class="grid-item"/>
-		<div class="grid-item"/>
-		<div class="grid-item"/>
-		<div class="grid-item"/>
-		<div class="grid-item"/>
+	<div class="project-grid"  >
+		<ProjectItem  v-for="project in dataFromAPI" v-bind:key="project.ProjectName"  v-bind:projectName="project.ProjectName" />
     </div>
 </template>
 <script>
-
+import ProjectItem from "../components/ProjectItem.vue"
 export default ({
+    components: {
+ProjectItem
+    },
+     data:() => ({
+        url: `http://localhost:37164/api/project/`,
+        dataFromAPI: [],
+    }),
+     async mounted(){
+    console.log("url: ",this.url)
+    let response;
+        
+    response = await fetch(
+      this.url + `get`
+      );
+
+    const data = await response.json();
+    console.log("data from response",data)
+    this.dataFromAPI = data;
+  }
 
 })
 </script>
