@@ -2,11 +2,14 @@
   <div class="app">
     <div class="grid-choices">
       <Searchbar class="searchbar"/>
-      <AddButton class="addbutton"/>
+       <div @click="isOpen=true ">
+         <AddButton class="addbutton"/>
+      </div>  
     </div>
-    <ProjectGrid/>
-    
-   
+    <ProjectGrid/>  
+      <transition name="fade" apper>
+    <ProjectitemModal :open="isOpen" @close="isOpen = !isOpen"/>   
+    </transition>    
   </div>
   
 </template>
@@ -15,6 +18,8 @@
 import AddButton from "../components/Buttons/AddButton.vue"
 import Searchbar from "../components/Searchbar.vue"
 import ProjectGrid from "../components/ProjectGrid.vue"
+import {ref} from "vue"
+import ProjectitemModal from "../views/ProjectitemModal.vue"
 
 
 export default {
@@ -22,8 +27,14 @@ export default {
     AddButton,
     Searchbar,
     ProjectGrid,
+    ProjectitemModal
     
   },
+  setup () {
+      const isOpen = ref(false)
+
+      return { isOpen }
+    },
   
   data:() => ({
     }),
