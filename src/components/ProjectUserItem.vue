@@ -10,7 +10,7 @@
     </div>
     <transition name="fade" apper>
     <modal :open="isOpen" @close="isOpen = !isOpen">
-      <p>Lorem ipsumaihgirgpwgjrowjrophgwrhhrwhrwhrwwrhwrhrhw</p>
+      <p>Vem är jag? </p>
     </modal>
     </transition>
 </template>

@@ -2,16 +2,16 @@
     <div class="navbar">
         <h1 ><a href="" class="logo">DoIT</a></h1>
         <ul class="nav-list">
-            <li class="nav-item"><a href="" class="link">Projects</a></li>
-            <li class="nav-item"><a href="" class="link">Operators</a></li>           
-        </ul>        
-    </div>      
+            <li class="nav-item"><a href="/OverviewPage/" class="link">Projects</a></li>
+            <li class="nav-item"><a href="/EmployeePage/" class="link">Operators</a></li>
+        </ul>
+    </div>
 </template>
 
 <script>
 export default {
     components: {
-        
+
     }
 }
 </script>
@@ -37,7 +37,7 @@ export default {
 
 }
 .nav-item a{
-    text-decoration: none;   
+    text-decoration: none;
 }
 .nav-item{
     padding: 30px 70px 30px 0px;
@@ -60,7 +60,7 @@ export default {
 .link{
     color:#7E69DF;
     font-size: 2em;
-    
+
 }
 
 
