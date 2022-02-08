@@ -6,7 +6,7 @@
                 <close-button></close-button>
             </div>
                 <h1>New Project</h1>
-               <form @submit="postData" method="post">
+               <form @submit.prevent="postData" method="post">
                 <div class="input-field">
                     <label for=""> Project Name</label>
                     <input type="text" name="projectName" v-model="posts.projectName">
