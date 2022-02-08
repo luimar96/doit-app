@@ -2,13 +2,13 @@
   <div class="app">
     <div class="grid-choices">
       <Searchbar class="searchbar"/>
-       <div @click="isOpen=true ">
+       <div @click="openAddView()">
          <AddButton class="addbutton"/>
       </div>  
     </div>
     <ProjectGrid/>  
       <transition name="fade" apper>
-    <ProjectitemModal :open="isOpen" @close="isOpen = !isOpen"/>   
+    <ProjectitemModal  ref="projectItemModel"/>   
     </transition>    
   </div>
   
@@ -38,6 +38,11 @@ export default {
   
   data:() => ({
     }),
+    methods:{
+      openAddView(){
+        this.$refs.projectItemModel.toggleOpen();
+      }
+    }
 }
 </script>
 

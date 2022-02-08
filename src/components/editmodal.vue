@@ -8,21 +8,24 @@
                 <h1>New Project</h1>
                <form @submit.prevent="postData" method="post">
                 <div class="input-field">
-                    <label for=""> Project Name</label>
-                    <input type="text" name="projectName" v-model="posts.projectName">
+                    <label for="">Project Name</label>
+                    <input type="text" name="projectName" v-model="projectName">
                 </div>
                 <div class="input-field">
                     <label for="">Customer</label>
-                    <input type="text"  name="customer" v-model="posts.customer">
+                    <input type="text"  name="customer" v-model="customer">
                 </div>
                 <div class="description-field">
                     <label for="">Description</label>
-                    <textarea name="description" id="" cols="30" rows="10" v-model="posts.description"></textarea>
-                </div>    
+                    <textarea name="description" id="" cols="30" rows="10" v-model="description"></textarea>
+                </div>              
                 <div class="addbutton" type="submit" @click="toggleOpen()">
                     <add-button ></add-button>
                     </div>                 
                 </form>
+                <div class="deltebutton" @click="deleteproject()">
+                    <delete-button ></delete-button> 
+                    </div> 
         </div>        
 </div>
     
@@ -31,53 +34,73 @@
 <script>
 import AddButton from "../components/Buttons/AddButton.vue"
 import CloseButton from "../components/Buttons/CloseButton.vue"
+import DeleteButton from "../components/Buttons/DeleteButton.vue"
 
 
 export default {
+    props: {      
+        projectData:{
+            type: Object,
+            default: () =>({}),
+
+        }
+    },
   components:{
     AddButton,
-    CloseButton
+    CloseButton,
+    DeleteButton
     
   },
   data:() => ({
-        url: `http://localhost:37164/api/project/`,
+        url: `http://localhost:37164/api/project/put/`,
         //dataFromAPI: [],
-       posts: {
-           projectName:null,
-           customer:null,
-           description:null
+        projectName: "",
+        description: "",
+        customer:"",
+        isOpen: false
 
-
-       },
-       isOpen:false
+       
     }),
     methods: {
         postData(){
           
-         fetch(       
-            this.url + `post`
-            ,{
-                method: 'POST',
+        fetch(this.url, {
+                method: 'PUT',
                 body: JSON.stringify({
-                    ProjectName: this.posts.projectName,
-                    Description: this.posts.description,
-                    CustomerId: this.posts.customer
+                    ProjectId : this.projectData.ProjectId,
+                    ProjectName: this.projectName,
+                    CustomerId: this.customer,
+                    Description: this.description
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
                 },
+                })
+                .then(this.$router.go());
 
-            }).then(this.$router.go());          
-          
+        },
+        setValues(){
+            this.description = this.projectData.Description;
+            this.projectName = this.projectData.ProjectName;
+            this.customer = this.projectData.CustomerId;
+
         },
 
         toggleOpen(){
             this.isOpen = !this.isOpen;
-           
+            this.setValues();
 
         },
+         deleteproject(){
+            fetch(`http://localhost:37164/api/project/delete/` + this.projectData.ProjectId, {
+                method: 'DELETE',
+          }).then( this.$router.go());
+         
+         }
+        
 
     },
+
     
     
   
@@ -95,7 +118,7 @@ export default {
     justify-content: center;
 }*/
 .vue-modal{
-   
+   display: none;
     position: absolute;
     width: 100%;
     height: 100%;
