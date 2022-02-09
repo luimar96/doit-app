@@ -3,47 +3,42 @@
 <div>
     <div>
       <ul>
-        <li v-for="task in dataFromAPI" v-bind:key="task.TicketHeadName">
-          <button class="add-btn">
-            <p>{{task.TicketHeadName}}</p>
+        <li >
+          <button class="add-btn" @click="openEditTask()">
+            <p>{{taskdata.TicketHeadName}}</p>
         </button>
 
         </li>
       </ul>
     </div>
 </div>
+  <transition name="fade" apper>
+          <EditTask v-bind:task="taskdata" ref="modal"/>   
+        </transition> 
 </template>
 <script>
 //import OverView from '../views/OverviewPage.vue'
-
+import EditTask from "../EditTask.vue"
 export default {
    props: {      
-        projectData:{
+        taskdata:{
             type: Object,
             default: () =>({}),
 
         }
     },
   components:{
-    //OverView
+    EditTask
   },
-  data:() => ({
-        url: `http://localhost:37164/api/tickethead/getbyproject/`,
-        dataFromAPI: [],
-    }),
-  async mounted(){
-    console.log(this.url)
-    let response;
-        
-    response = await fetch(
-      this.url + this.projectData.ProjectId
-      );
+  methods:{
+     openEditTask(){
+              this.isOpen = true;
+             this.$refs.modal.toggleOpen();
+        }
 
-    const data = await response.json();
-    console.log(data)
-    this.dataFromAPI = data;
   }
 }
+
 </script>
 <style scoped>
 .add-btn{

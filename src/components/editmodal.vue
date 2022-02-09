@@ -11,9 +11,11 @@
                     <label for="">Project Name</label>
                     <input type="text" name="projectName" v-model="projectName">
                 </div>
-                <div class="input-field">
+                <div class="dropdown">
                     <label for="">Customer</label>
-                    <input type="text"  name="customer" v-model="customer">
+                    <select v-model="customer">
+                        <option v-for="cust in customers" v-bind:key="cust.CustomerName">{{ cust.CustomerId }}</option> //Ändra detta till att visa CustomerName men skicka med CustomerId till SQL
+                    </select>
                 </div>
                 <div class="description-field">
                     <label for="">Description</label>
@@ -57,14 +59,15 @@ export default {
         projectName: "",
         description: "",
         customer:"",
-        isOpen: false
+        isOpen: false,
+        customerUrl: `http://localhost:37164/api/customer/get`,
+        customers: [],
 
        
     }),
     methods: {
         postData(){
-          
-        fetch(this.url, {
+         fetch(this.url, {
                 method: 'PUT',
                 body: JSON.stringify({
                     ProjectId : this.projectData.ProjectId,
@@ -76,30 +79,36 @@ export default {
                     'Content-type': 'application/json; charset=UTF-8',
                 },
                 }).then(this.$router.go());
-
         },
         setValues(){
             this.description = this.projectData.Description;
             this.projectName = this.projectData.ProjectName;
             this.customer = this.projectData.CustomerId;
-
         },
-
         toggleOpen(){
             this.isOpen = !this.isOpen;
             this.setValues();
-
         },
          deleteproject(){
             fetch(`http://localhost:37164/api/project/delete/` + this.projectData.ProjectId, {
                 method: 'DELETE',
           }).then( this.$router.go());
-         
-         }
-        
+        }
+    },
+    async mounted(){
+        console.log(this.url)
+        let response;
+            
+        response = await fetch(
+        this.customerUrl
+        );
+
+        const data = await response.json();
+        this.customers = data;
+        console.log("customers",this.customers);
 
     },
-
+    
     
     
   
