@@ -14,7 +14,6 @@ ProjectItem
         dataFromAPI: [],
     }),
      async mounted(){
-    console.log("url: ",this.url)
     let response;
         
     response = await fetch(
@@ -22,7 +21,6 @@ ProjectItem
       );
 
     const data = await response.json();
-    console.log("data from response",data)
     this.dataFromAPI = data;
   }
 

@@ -15,8 +15,8 @@
    
          
     <transition name="fade" apper>
-    <modal v-bind:projectData="projectData" ref="modal">
-    </modal>
+    <ProjectTaskModal v-bind:projectData="projectData" ref="modal2"/>
+   
     </transition>   
      
       
@@ -24,7 +24,7 @@
 </template>
 <script>
 import {ref} from "vue"
-import Modal from "../views/Modal.vue"
+import ProjectTaskModal from "../views/Modal.vue"
 import Editmodal from "../components/editmodal.vue"
 export default {
     props: {
@@ -40,7 +40,7 @@ export default {
       return { isOpen }
     },
     components: {
-        Modal,
+        ProjectTaskModal,
         Editmodal
         
     },
@@ -50,13 +50,11 @@ export default {
     methods:{
      
       openEditView(){
-        console.log("openedtiview")
         this.$refs.modal.toggleOpen();
       },
       openProjectView(){
         this.isOpen = true;
-         this.$refs.modal.toggleOpen();
-      console.log("openprojectview")
+         this.$refs.modal2.toggleOpen();
 
       }
     },

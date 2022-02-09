@@ -11,9 +11,11 @@
                     <label for=""> Project Name</label>
                     <input type="text" name="projectName" v-model="posts.projectName">
                 </div>
-                <div class="input-field">
+                <div class="dropdown">
                     <label for="">Customer</label>
-                    <input type="text"  name="customer" v-model="posts.customer">
+                    <select v-model="customer">
+                        <option v-for="cust in customers" v-bind:key="cust.CustomerName">{{ cust.CustomerId }}</option> //Ändra detta till att visa CustomerName men skicka med CustomerId till SQL
+                    </select>
                 </div>
                 <div class="description-field">
                     <label for="">Description</label>
@@ -41,10 +43,12 @@ export default {
   },
   data:() => ({
         url: `http://localhost:37164/api/project/`,
+        customerUrl: `http://localhost:37164/api/customer/get`,
         //dataFromAPI: [],
+        customers: [],
        posts: {
            projectName:null,
-           customer:null,
+           customer: {},
            description:null
 
 
@@ -76,11 +80,20 @@ export default {
            
 
         },
+    },
+    async mounted(){
+        console.log(this.url)
+        let response;
+            
+        response = await fetch(
+        this.customerUrl
+        );
+
+        const data = await response.json();
+        this.customers = data;
+        console.log("customers",this.customers);
 
     },
-    
-    
-  
 }
 </script>
 <style scoped>
@@ -163,7 +176,8 @@ label{
 }
 form{
     margin-left: 80px;
-    
 }
+.dropdown{
 
+}
 </style>
