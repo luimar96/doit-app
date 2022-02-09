@@ -19,7 +19,7 @@
                     <label for="">Description</label>
                     <textarea name="description" id="" cols="30" rows="10" v-model="description"></textarea>
                 </div>              
-                <div class="addbutton" type="submit" @click="toggleOpen()">
+                <div class="addbutton" type="submit">
                     <add-button ></add-button>
                     </div>                 
                 </form>
@@ -75,8 +75,7 @@ export default {
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
                 },
-                })
-                .then(this.$router.go());
+                }).then(this.$router.go());
 
         },
         setValues(){
