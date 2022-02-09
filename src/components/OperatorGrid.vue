@@ -1,13 +1,14 @@
 <template>
 	<div class="project-grid"  >
-		<ProjectItem  v-for="project in dataFromAPI" v-bind:key="project.ProjectName"  v-bind:projectName="project.ProjectName" />
+		<OperatorItem  v-for="Employee in dataFromAPI" v-bind:key="Employee.EmployeeName"  v-bind:projectData="Employee" />
     </div>
 </template>
 <script>
-import ProjectItem from "../components/ProjectUserItem.vue"
+import OperatorItem from "../components/OperatorItem.vue"
+
 export default ({
     components: {
-ProjectItem
+OperatorItem
     },
      data:() => ({
         url: `http://localhost:37164/api/Employee/`,

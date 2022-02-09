@@ -8,7 +8,7 @@
     </div>
     <OperatorGrid/>
       <transition name="fade" apper>
-    <ProjectitemModal  ref="projectItemModel"/>
+    <OperatorItemModel  ref="OperatorItemModel"/>
     </transition>
   </div>
 
@@ -19,7 +19,7 @@ import AddButton from "../components/Buttons/AddButton.vue"
 import Searchbar from "../components/Searchbar.vue"
 import OperatorGrid from "../components/OperatorGrid.vue"
 import {ref} from "vue"
-import ProjectitemModal from "./ProjectitemModal.vue"
+import OperatorItemModel from "./OperatorItemModel.vue"
 
 
 export default {
@@ -27,7 +27,7 @@ export default {
     AddButton,
     Searchbar,
     OperatorGrid,
-    ProjectitemModal
+    OperatorItemModel
 
   },
   setup () {
@@ -40,7 +40,7 @@ export default {
     }),
     methods:{
       openAddView(){
-        this.$refs.projectItemModel.toggleOpen();
+        this.$refs.OperatorItemModel.toggleOpen();
       }
     }
 }
