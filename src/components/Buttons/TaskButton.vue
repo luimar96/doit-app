@@ -17,11 +17,18 @@
 //import OverView from '../views/OverviewPage.vue'
 
 export default {
+   props: {      
+        projectData:{
+            type: Object,
+            default: () =>({}),
+
+        }
+    },
   components:{
     //OverView
   },
   data:() => ({
-        url: `http://localhost:37164/api/tickethead/`,
+        url: `http://localhost:37164/api/tickethead/getbyproject/`,
         dataFromAPI: [],
     }),
   async mounted(){
@@ -29,7 +36,7 @@ export default {
     let response;
         
     response = await fetch(
-      this.url + `get`
+      this.url + this.projectData.ProjectId
       );
 
     const data = await response.json();
