@@ -2,8 +2,8 @@
     <div class="navbar">
         <h1 ><a href="" class="logo">DoIT</a></h1>
         <ul class="nav-list">
-            <li class="nav-item"><a href="/OverviewPage/" class="link">Projects</a></li>
-            <li class="nav-item"><a href="/EmployeePage/" class="link">Operators</a></li>
+            <li class="nav-item"><a href="/Overview/" class="link">Projects</a></li>
+        <li class="nav-item"><a href="/operators" class="link">Operators</a></li>
         </ul>
     </div>
 </template>
@@ -12,7 +12,8 @@
 export default {
     components: {
 
-    }
+    },
+
 }
 </script>
 <style scoped>

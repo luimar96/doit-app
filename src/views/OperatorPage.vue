@@ -2,33 +2,47 @@
   <div class="app">
     <div class="grid-choices">
       <Searchbar class="searchbar"/>
-      <AddButton class="addbutton"/>
+       <div @click="openAddView()">
+         <AddButton class="addbutton"/>
+      </div>
     </div>
-    <ProjectGridUsersVue/>
-
-
+    <OperatorGrid/>
+      <transition name="fade" apper>
+    <ProjectitemModal  ref="projectItemModel"/>
+    </transition>
   </div>
 
 </template>
 
 <script>
-import ProjectGridUsersVue from "../components/ProjectGridUsers.vue";
-
 import AddButton from "../components/Buttons/AddButton.vue"
 import Searchbar from "../components/Searchbar.vue"
-
+import OperatorGrid from "../components/OperatorGrid.vue"
+import {ref} from "vue"
+import ProjectitemModal from "./ProjectitemModal.vue"
 
 
 export default {
   components:{
     AddButton,
     Searchbar,
-    ProjectGridUsersVue,
+    OperatorGrid,
+    ProjectitemModal
 
   },
+  setup () {
+      const isOpen = ref(false)
+
+      return { isOpen }
+    },
 
   data:() => ({
     }),
+    methods:{
+      openAddView(){
+        this.$refs.projectItemModel.toggleOpen();
+      }
+    }
 }
 </script>
 

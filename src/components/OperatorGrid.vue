@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import ProjectItem from "../components/ProjectItem.vue"
+import ProjectItem from "../components/ProjectUserItem.vue"
 export default ({
     components: {
 ProjectItem
