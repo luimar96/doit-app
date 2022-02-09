@@ -1,11 +1,11 @@
 <template>
-<div class="vue-modal" v-show="open">
+<div class="vue-modal" v-show="isOpen">
     <div class="vue-modal-inner">
         <div class="vue-modal-content">
-            <task-button></task-button>
+            <task-button v-bind:projectData="projectData"></task-button>
             <add-button></add-button>
             <slot/>
-            <button type="button" @click="$emit('close')">Close</button>
+            <button type="button" @click="toggleOpen()">Close</button>
         </div>
     </div>
 </div>
@@ -17,12 +17,14 @@ import AddButton from "../components/Buttons/AddButton.vue"
 import TaskButton from "../components/Buttons/TaskButton.vue"
 
 export default {
-    props: {
-        open: {
-            type: Boolean,
-            required: true
+     props: {      
+        projectData:{
+            type: Object,
+            default: () =>({}),
+
         }
     },
+    
   components:{
     AddButton,
     TaskButton
@@ -30,6 +32,7 @@ export default {
   data:() => ({
         url: `http://localhost:37164/api/tickethead/`,
         dataFromAPI: [],
+        isOpen:false,
     }),
   async mounted(){
     console.log(this.url)
@@ -42,6 +45,13 @@ export default {
     const data = await response.json();
     console.log(data)
     this.dataFromAPI = data;
+  },
+  methods:{
+       toggleOpen(){
+            this.isOpen = !this.isOpen;
+            
+
+        },
   }
 }
 </script>

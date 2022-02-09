@@ -15,8 +15,7 @@
    
          
     <transition name="fade" apper>
-    <modal :open="isOpen" @close="isOpen = !isOpen">
-      <p>Lorem ipsumaihgirgpwgjrowjrophgwrhhrwhrwhrwwrhwrhrhw</p>
+    <modal v-bind:projectData="projectData" ref="modal">
     </modal>
     </transition>   
      
@@ -56,6 +55,7 @@ export default {
       },
       openProjectView(){
         this.isOpen = true;
+         this.$refs.modal.toggleOpen();
       console.log("openprojectview")
 
       }
