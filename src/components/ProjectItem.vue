@@ -88,6 +88,7 @@ export default {
    font-size:2em;
    display: flex;
    justify-content: flex-end;
+   z-index: 0;
 }
 .fa-ellipsis-h{
    opacity: 70%;   
