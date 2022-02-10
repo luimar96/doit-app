@@ -1,6 +1,6 @@
 <template>
-<div class="vue-modal" v-show="isOpen">
-         
+<div class="vue-modal" v-show="isOpen" >
+         <div class="backdrop" @click="toggleOpen()"></div>
         <div class="model-content">
             <div class="close"  @click="toggleOpen()">
                 <close-button></close-button>
@@ -126,17 +126,35 @@ export default {
     justify-content: center;
 }*/
 .vue-modal{
-   display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    display: block;
+    position: fixed;
     top:0; 
-    background-color:rgba(0, 0, 0, 0.4);  
+    width: 100vw;
+    height: 100vh;
+    
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 11;
      
 }
+
+.backdrop{
+    background-color:rgba(0, 0, 0, 0.4);  
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+}
+
+.model-content{    
+    width:100rem;
+    height:50rem;
+    background-color: white;
+    border-radius: 5px;
+    position: relative;
+
+}
+
 h1{
     text-align: center;
     font-size:48px;
@@ -182,15 +200,6 @@ input{
 label{
     font-size: 34px;
     margin:15px;
-}
-
-.model-content{    
-    width:100rem;
-    height:50rem;
-    background-color: white;
-    border-radius: 5px;
-    position: relative;
-
 }
 form{
     margin-left: 80px;

@@ -40,6 +40,5 @@ ProjectItem
     width: 28vw;
     min-width: 380px;
     height: 200px;
-    background-color: #DEDCFF;
 }
 </style>
