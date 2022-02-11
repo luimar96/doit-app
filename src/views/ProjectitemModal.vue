@@ -7,7 +7,7 @@
                 <close-button></close-button>
             </div>
             <form @submit.prevent="postData" method="post">
-                
+
                 <div class="inputs">
                     <div class="input-field">
                         <input type="text" name="projectName" v-model="posts.projectName" placeholder="Project Name...">
@@ -20,16 +20,16 @@
                     </div>
                     <div class="description-field">
                         <textarea name="description" id="" cols="30" rows="10" v-model="posts.description" placeholder="Description..."></textarea>
-                    </div>  
-                </div>  
+                    </div>
+                </div>
                 <div class="add" type="submit" @click="toggleOpen()">
                     <add-button ></add-button>
-                    </div>                 
+                    </div>
                 </form>
-        </div>        
+        </div>
 </div>
-    
-  
+
+
 </template>
 <script>
 import AddButton from "../components/Buttons/AddButton.vue"
@@ -40,7 +40,7 @@ export default {
   components:{
     AddButton,
     CloseButton
-    
+
   },
   data:() => ({
         url: `http://localhost:37164/api/project/`,
@@ -58,8 +58,8 @@ export default {
     }),
     methods: {
         postData(){
-          
-         fetch(       
+
+         fetch(
             this.url + `post`
             ,{
                 method: 'POST',
@@ -72,20 +72,20 @@ export default {
                     'Content-type': 'application/json; charset=UTF-8',
                 },
 
-            }).then(this.$router.go());          
+            }).then(this.$router.go());
           console.log(this.posts)
         },
 
         toggleOpen(){
             this.isOpen = !this.isOpen;
-           
+
 
         },
     },
     async mounted(){
         console.log(this.url)
         let response;
-            
+
         response = await fetch(
         this.customerUrl
         );
@@ -110,7 +110,7 @@ export default {
 }*/
 .vue-modal{
     position: -webkit-sticky;
-    top: 0px; 
+    top: 0px;
     bottom: 0px;
     width: 100vw;
     height: 100vh;
@@ -119,16 +119,16 @@ export default {
     justify-content: center;
     align-items: center;
     z-index: 11;
-     
+
 }
 .backdrop{
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color:rgba(0, 0, 0, 0.4);  
+    background-color:rgba(0, 0, 0, 0.4);
     z-index: 10;
 }
-.modal-content{    
+.modal-content{
     width: 80vw;
     min-width: 450px;
     height: Calc(50vh + 270px);
@@ -147,14 +147,11 @@ h1{
     margin: 0px, 20px;
 }
 
-hr{
-
-}
 
 .inputs{
     border-top: solid #beb3ee 1px;
     border-bottom: solid #beb3ee 1px;
-    margin-left: 2.5%; 
+    margin-left: 2.5%;
     width: 95%;
     height: 50vh;
     overflow: auto;
@@ -164,17 +161,17 @@ hr{
  display:flex;
  flex-direction: column;
  margin:10px;
-    
+
 }
 
 .description-field{
     display:flex;
     flex-direction: column;
      margin:10px;
-    
+
 }
 textarea{
-    
+
     width: 95%;
     height: 200px;
     border-radius: 15px;

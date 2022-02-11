@@ -8,17 +8,30 @@
                 <h1>New Employee</h1>
                <form @submit.prevent="postData" method="post">
                 <div class="input-field">
-                    <label for=""> Role</label>
-                    <input type="text" name="projectName" v-model="posts.Role">
+                    <label for=""> DepartmentId</label>
+                    <input type="text" name="DepartmentId" v-model="posts.DepartmentId">
                 </div>
                 <div class="input-field">
                     <label for="">Name</label>
-                    <input type="text"  name="customer" v-model="posts.Employee">
+                    <input type="text"  name="customer" v-model="posts.EmployeeName">
                 </div>
-                <div class="description-field">
-                    <label for="">Description</label>
-                    <textarea name="description" id="" cols="30" rows="10" v-model="posts.description"></textarea>
+                <div class="input-field">
+                    <label for="">UserName</label>
+                    <input type="text"  name="UserName" v-model="posts.UserName">
                 </div>
+                <div class="input-field">
+                    <label for="">DateOfJoining</label>
+                    <input type="Date"  name="DateOfJoining" v-model="posts.DateOfJoining">
+                </div>
+                 <div class="input-field">
+                    <label for="">Password</label>
+                    <input type="password"  name="Password" v-model="posts.Password">
+                </div>
+                 <div class="PhotoFileName-field">
+                    <label for="">PhotoFileName</label>
+                    <input type="text"  name="PhotoFileName" v-model="posts.PhotoFileName">
+                </div>
+
                 <div class="addbutton" type="submit" @click="toggleOpen()">
                     <add-button ></add-button>
                     </div>
@@ -43,9 +56,12 @@ export default {
         url: `http://localhost:37164/api/Employee/`,
         //dataFromAPI: [],
        posts: {
-           projectName:null,
-           customer:null,
-           description:null
+           EmployeeName:null,
+           DateOfJoining: null,
+           PhotoFileName: null,
+           DepartmentId: null,
+           UserName: null,
+           Password: null,
 
 
        },
@@ -54,22 +70,28 @@ export default {
     methods: {
         postData(){
 
+
          fetch(
             this.url + `post`
             ,{
                 method: 'POST',
                 body: JSON.stringify({
-                    ProjectName: this.posts.projectName,
-                    Description: this.posts.description,
-                    CustomerId: this.posts.customer
+
+                    customer: this.posts.EmployeeName,
+                    UserName: this.posts.UserName,
+                    Password: this.posts.Password,
+                    DepartmentId: this.posts.DepartmentId,
+                    PhotoFileName: this.posts.PhotoFileName,
                 }),
+
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
                 },
 
-            }).then(this.$router.go());
 
+            }).then(this.$router.go());
         },
+
 
         toggleOpen(){
             this.isOpen = !this.isOpen;
@@ -77,10 +99,8 @@ export default {
 
         },
 
+
     },
-
-
-
 }
 </script>
 <style scoped>
