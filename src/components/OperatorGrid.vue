@@ -1,26 +1,29 @@
 <template>
 	<div class="project-grid"  >
-		<ProjectItem  v-for="project in dataFromAPI" v-bind:key="project.ProjectName"  v-bind:projectData="project" />
+		<OperatorItem  v-for="Employee in dataFromAPI" v-bind:key="Employee.EmployeeName"  v-bind:projectData="Employee" />
     </div>
 </template>
 <script>
-import ProjectItem from "../components/ProjectItem.vue"
+import OperatorItem from "../components/OperatorItem.vue"
+
 export default ({
     components: {
-ProjectItem
+OperatorItem
     },
      data:() => ({
-        url: `http://localhost:37164/api/project/`,
+        url: `http://localhost:37164/api/Employee/`,
         dataFromAPI: [],
     }),
      async mounted(){
+    console.log("url: ",this.url)
     let response;
-        
+
     response = await fetch(
       this.url + `get`
       );
 
     const data = await response.json();
+    console.log("data from response",data)
     this.dataFromAPI = data;
   }
 
@@ -40,5 +43,6 @@ ProjectItem
     width: 28vw;
     min-width: 380px;
     height: 200px;
+    background-color: #DEDCFF;
 }
 </style>
