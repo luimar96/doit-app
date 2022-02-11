@@ -1,27 +1,28 @@
 <template>
 <div class="vue-modal" v-show="isOpen">
-         
-        <div class="model-content">
+         <div class="backdrop" @click="toggleOpen()"></div>
+        <div class="modal-content">
+            <h1>New Project</h1>
             <div class="close"  @click="toggleOpen()">
                 <close-button></close-button>
             </div>
-                <h1>New Project</h1>
-               <form @submit.prevent="postData" method="post">
-                <div class="input-field">
-                    <label for=""> Project Name</label>
-                    <input type="text" name="projectName" v-model="posts.projectName">
-                </div>
-                <div class="dropdown">
-                    <label for="">Customer</label>
-                    <select v-model="customer">
-                        <option v-for="cust in customers" v-bind:key="cust.CustomerName">{{ cust.CustomerId }}</option> //Ändra detta till att visa CustomerName men skicka med CustomerId till SQL
-                    </select>
-                </div>
-                <div class="description-field">
-                    <label for="">Description</label>
-                    <textarea name="description" id="" cols="30" rows="10" v-model="posts.description"></textarea>
-                </div>    
-                <div class="addbutton" type="submit" @click="toggleOpen()">
+            <form @submit.prevent="postData" method="post">
+                
+                <div class="inputs">
+                    <div class="input-field">
+                        <input type="text" name="projectName" v-model="posts.projectName" placeholder="Project Name...">
+                    </div>
+                    <div class="dropdown">
+                        <label for="">Customer</label>
+                        <select v-model="posts.customer">
+                            <option v-for="cust in customers" v-bind:key="cust.CustomerName" :value="cust.CustomerId">{{ cust.CustomerName }}</option> //Ändra detta till att visa CustomerName men skicka med CustomerId till SQL
+                        </select>
+                    </div>
+                    <div class="description-field">
+                        <textarea name="description" id="" cols="30" rows="10" v-model="posts.description" placeholder="Description..."></textarea>
+                    </div>  
+                </div>  
+                <div class="add" type="submit" @click="toggleOpen()">
                     <add-button ></add-button>
                     </div>                 
                 </form>
@@ -72,7 +73,7 @@ export default {
                 },
 
             }).then(this.$router.go());          
-          
+          console.log(this.posts)
         },
 
         toggleOpen(){
@@ -108,23 +109,57 @@ export default {
     justify-content: center;
 }*/
 .vue-modal{
-   
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top:0; 
-    background-color:rgba(0, 0, 0, 0.4);  
+    position: -webkit-sticky;
+    top: 0px; 
+    bottom: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 11;
      
 }
+.backdrop{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color:rgba(0, 0, 0, 0.4);  
+    z-index: 10;
+}
+.modal-content{    
+    width: 80vw;
+    min-width: 450px;
+    height: Calc(50vh + 270px);
+    overflow: auto;
+    background-color: white;
+    border-radius: 20px;
+    position: relative;
+    z-index: 11;
+
+}
+
 h1{
     text-align: center;
     font-size:48px;
     opacity: 70%;
+    margin: 0px, 20px;
+}
+
+hr{
 
 }
+
+.inputs{
+    border-top: solid #beb3ee 1px;
+    border-bottom: solid #beb3ee 1px;
+    margin-left: 2.5%; 
+    width: 95%;
+    height: 50vh;
+    overflow: auto;
+}
+
 .input-field{
  display:flex;
  flex-direction: column;
@@ -139,45 +174,38 @@ h1{
     
 }
 textarea{
-    width: 50%;
+    
+    width: 95%;
+    height: 200px;
+    border-radius: 15px;
     resize:none;
     border: solid 1px #7E69DF;
     margin-left:6px ;
+    padding: 10px;
+    font-size: 20px;
+}
+textarea:focus{
+    outline: #7E69DF solid 2px;
 }
 
 input{
     width: 50%;
 }
-.addbutton{
-   position: absolute;
-    right: 20px;
-    bottom: 10px;
-    margin:20px;
-  
-}
 .close{
     position: absolute;
-    top:0;
-    right: 14px;
-     margin:10px;
+    top: 15px;
+    right: 15px;
+}
+.add{
+    position: absolute;
+    right: 25px;
+    bottom: 30px;
 }
 label{
     font-size: 34px;
     margin:15px;
 }
-
-.model-content{    
-    width:100rem;
-    height:50rem;
-    background-color: white;
-    border-radius: 5px;
-    position: relative;
-
-}
 form{
-    margin-left: 80px;
-}
-.dropdown{
-
+    margin: 0px;
 }
 </style>
