@@ -1,6 +1,6 @@
 <template>
-<div class="vue-modal" v-show="isOpen">
-         
+<div class="vue-modal" v-show="isOpen" >
+         <div class="backdrop" @click="toggleOpen()"></div>
         <div class="model-content">
             <div class="close"  @click="toggleOpen()">
                 <close-button></close-button>
@@ -11,15 +11,17 @@
                     <label for="">Project Name</label>
                     <input type="text" name="projectName" v-model="projectName">
                 </div>
-                <div class="input-field">
+                <div class="dropdown">
                     <label for="">Customer</label>
-                    <input type="text"  name="customer" v-model="customer">
+                    <select v-model="customer">
+                        <option v-for="cust in customers" v-bind:key="cust.CustomerName">{{ cust.CustomerId }}</option> //Ändra detta till att visa CustomerName men skicka med CustomerId till SQL
+                    </select>
                 </div>
                 <div class="description-field">
                     <label for="">Description</label>
                     <textarea name="description" id="" cols="30" rows="10" v-model="description"></textarea>
                 </div>              
-                <div class="addbutton" type="submit" @click="toggleOpen()">
+                <div class="addbutton" type="submit">
                     <add-button ></add-button>
                     </div>                 
                 </form>
@@ -57,14 +59,15 @@ export default {
         projectName: "",
         description: "",
         customer:"",
-        isOpen: false
+        isOpen: false,
+        customerUrl: `http://localhost:37164/api/customer/get`,
+        customers: [],
 
        
     }),
     methods: {
         postData(){
-          
-        fetch(this.url, {
+         fetch(this.url, {
                 method: 'PUT',
                 body: JSON.stringify({
                     ProjectId : this.projectData.ProjectId,
@@ -75,32 +78,37 @@ export default {
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
                 },
-                })
-                .then(this.$router.go());
-
+                }).then(this.$router.go());
         },
         setValues(){
             this.description = this.projectData.Description;
             this.projectName = this.projectData.ProjectName;
             this.customer = this.projectData.CustomerId;
-
         },
-
         toggleOpen(){
             this.isOpen = !this.isOpen;
             this.setValues();
-
         },
          deleteproject(){
             fetch(`http://localhost:37164/api/project/delete/` + this.projectData.ProjectId, {
                 method: 'DELETE',
           }).then( this.$router.go());
-         
-         }
-        
+        }
+    },
+    async mounted(){
+        console.log(this.url)
+        let response;
+            
+        response = await fetch(
+        this.customerUrl
+        );
+
+        const data = await response.json();
+        this.customers = data;
+        console.log("customers",this.customers);
 
     },
-
+    
     
     
   
@@ -118,17 +126,35 @@ export default {
     justify-content: center;
 }*/
 .vue-modal{
-   display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    display: block;
+    position: fixed;
     top:0; 
-    background-color:rgba(0, 0, 0, 0.4);  
+    width: 100vw;
+    height: 100vh;
+    
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 11;
      
 }
+
+.backdrop{
+    background-color:rgba(0, 0, 0, 0.4);  
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+}
+
+.model-content{    
+    width:100rem;
+    height:50rem;
+    background-color: white;
+    border-radius: 5px;
+    position: relative;
+
+}
+
 h1{
     text-align: center;
     font-size:48px;
@@ -174,15 +200,6 @@ input{
 label{
     font-size: 34px;
     margin:15px;
-}
-
-.model-content{    
-    width:100rem;
-    height:50rem;
-    background-color: white;
-    border-radius: 5px;
-    position: relative;
-
 }
 form{
     margin-left: 80px;
