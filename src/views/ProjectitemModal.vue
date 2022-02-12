@@ -19,16 +19,16 @@
                     </div>
                     <div class="description-field">
                         <textarea name="description" id="" cols="30" rows="10" v-model="posts.description" placeholder="Description..."></textarea>
-                    </div>  
-                </div>  
+                    </div>
+                </div>
                 <div class="add" type="submit" @click="toggleOpen()">
                     <add-button ></add-button>
-                    </div>                 
+                    </div>
                 </form>
-        </div>        
+        </div>
 </div>
-    
-  
+
+
 </template>
 <script>
 import AddButton from "../components/Buttons/AddButton.vue"
@@ -39,7 +39,7 @@ export default {
   components:{
     AddButton,
     CloseButton
-    
+
   },
   data:() => ({
         url: `http://localhost:37164/api/project/`,
@@ -57,8 +57,8 @@ export default {
     }),
     methods: {
         postData(){
-          
-         fetch(       
+
+         fetch(
             this.url + `post`
             ,{
                 method: 'POST',
@@ -71,20 +71,20 @@ export default {
                     'Content-type': 'application/json; charset=UTF-8',
                 },
 
-            }).then(this.$router.go());          
+            }).then(this.$router.go());
           console.log(this.posts)
         },
 
         toggleOpen(){
             this.isOpen = !this.isOpen;
-           
+
 
         },
     },
     async mounted(){
         console.log(this.url)
         let response;
-            
+
         response = await fetch(
         this.customerUrl
         );
@@ -99,7 +99,7 @@ export default {
 <style scoped>
 .vue-modal{
     position: -webkit-sticky;
-    top: 0px; 
+    top: 0px;
     bottom: 0px;
     width: 100vw;
     height: 100vh;
@@ -113,13 +113,15 @@ export default {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color:rgba(0, 0, 0, 0.4);  
+    background-color:rgba(0, 0, 0, 0.4);
     z-index: 10;
 }
+
 .modal-content{  
     margin-top: auto;
     margin-bottom: auto;
     width: 70vw;
+
     min-width: 450px;
     max-width: 850px;
     height: 100%;
@@ -139,6 +141,7 @@ h1{
     opacity: 70%;
     margin: 2vh 0px;
 }
+
 
 .inputs{
     display: flex;
@@ -206,6 +209,7 @@ textarea{
     width: 85%;
     min-height: 100px;
     height: 50vh;
+
     border-radius: 15px;
     resize: none;
     margin: 0px auto;

@@ -25,7 +25,7 @@
         </div>   
 </div>
 <transition name="fade" apper>
-    <AddTaskItem ref="modal"/>
+    <AddTaskItem v-bind:projectData="projectData" ref="modal"/>
 </transition>
 
 </template>
