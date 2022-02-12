@@ -1,10 +1,8 @@
 <template>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div>
     <button class="close-btn">
         <i class="fa fa-close"></i>
     </button>
-</div> 
     
 </template>
 <script>
@@ -17,8 +15,8 @@ export default {
 
 <style scoped>
 .close-btn{
-    width: 70px;
-    height: 70px;
+    width: 100%;
+    height: 100%;
     border-radius: 1em;
     border: none;
     background-color: #EEB3B3;
@@ -26,7 +24,7 @@ export default {
     cursor: pointer;
 }
 .fa-close{
-    font-size: 2em;
+    font-size: 300%;
      opacity: 50%;
 }
 .close-btn:hover {background-color: #ee9999}

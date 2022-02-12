@@ -48,11 +48,11 @@ import Navbar from "./components/navBar.vue"
 }
 
 body{
- overflow-x: hidden;
- overflow-y: auto;
- width: 100vw;
- height: 100vh;
- margin: 0px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
 }
 
 .page{

@@ -1,10 +1,8 @@
 <template>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div>
     <button class="add-btn">
         <i class="fa fa-plus"></i>
     </button>
-</div> 
 </template>
 <script>
 export default {
@@ -13,8 +11,8 @@ export default {
 </script>
 <style scoped>
 .add-btn{
-    width: 242px;
-    height: 90px;
+    width: 100%;
+    height: 100%;
     border-radius: 1em;
     border: none;
     background-color: #BEB3EE;
@@ -22,7 +20,8 @@ export default {
     cursor: pointer;
 }
 .fa-plus{
-    font-size: 4em;
+    margin: auto auto;
+    font-size: 300%;
     opacity: 50%;
 }
 .add-btn:hover {background-color: #9c8beb}
