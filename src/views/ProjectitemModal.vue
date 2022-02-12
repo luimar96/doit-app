@@ -3,17 +3,16 @@
          <div class="backdrop" @click="toggleOpen()"></div>
         <div class="modal-content">
             <h1>New Project</h1>
-            <div class="close"  @click="toggleOpen()">
-                <close-button></close-button>
-            </div>
+                <div class="close-button"  @click="toggleOpen()">
+                    <close-button></close-button>
+                </div>
             <form @submit.prevent="postData" method="post">
-
                 <div class="inputs">
                     <div class="input-field">
                         <input type="text" name="projectName" v-model="posts.projectName" placeholder="Project Name...">
                     </div>
                     <div class="dropdown">
-                        <label for="">Customer</label>
+                        <label class="customerLabel">Customer</label>
                         <select v-model="posts.customer">
                             <option v-for="cust in customers" v-bind:key="cust.CustomerName" :value="cust.CustomerId">{{ cust.CustomerName }}</option> //Ändra detta till att visa CustomerName men skicka med CustomerId till SQL
                         </select>
@@ -98,16 +97,6 @@ export default {
 }
 </script>
 <style scoped>
-/*
-*,
-::before,
-::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    position: relative;
-    justify-content: center;
-}*/
 .vue-modal{
     position: -webkit-sticky;
     top: 0px;
@@ -119,7 +108,6 @@ export default {
     justify-content: center;
     align-items: center;
     z-index: 11;
-
 }
 .backdrop{
     position: absolute;
@@ -128,11 +116,18 @@ export default {
     background-color:rgba(0, 0, 0, 0.4);
     z-index: 10;
 }
-.modal-content{
-    width: 80vw;
+
+.modal-content{  
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 70vw;
+
     min-width: 450px;
-    height: Calc(50vh + 270px);
-    overflow: auto;
+    max-width: 850px;
+    height: 100%;
+    min-height: 200px;
+    max-height: 750px;
+    overflow: hidden;
     background-color: white;
     border-radius: 20px;
     position: relative;
@@ -144,65 +139,107 @@ h1{
     text-align: center;
     font-size:48px;
     opacity: 70%;
-    margin: 0px, 20px;
+    margin: 2vh 0px;
 }
 
 
 .inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border-top: solid #beb3ee 1px;
     border-bottom: solid #beb3ee 1px;
-    margin-left: 2.5%;
-    width: 95%;
-    height: 50vh;
+    margin: 0px auto;
+    width: 85%;
+    height: 100%;
     overflow: auto;
+    overflow-x: hidden;
+    flex-shrink: 1;
 }
 
 .input-field{
- display:flex;
- flex-direction: column;
- margin:10px;
+    display:flex;
+    flex-direction: column;
+    margin: 20px 0px;
+}
 
+.input-field > input{
+    box-shadow: none;
+    width: 85%;
+    margin: 0px auto;
+    height: 7vh;
+    min-height: 50px;
+    max-height: 70px;
+}
+
+.customerLabel{
+    padding-left: 35px;
+    font-size: 25px;
+    opacity: 0.80;
+}
+
+.dropdown{
+    width: 100%;
+}
+
+.dropdown > select{
+    width: 90%;
+    border: 1px solid #7E69DF;
+    border-radius: 15px 15px 0px 0px;
+    height: 5vh;
+    display: block;
+    margin: 0 auto;
+    min-height: 30px;
+    max-height: 50px;
+    padding: 0px 20px 0px 20px;
+    font-size: 15px;
+}
+
+select:focus{
+    outline: none;
 }
 
 .description-field{
-    display:flex;
-    flex-direction: column;
-     margin:10px;
-
+    width: 100%;
+    margin: 20px auto 20px auto;
+    height: 300px;
 }
 textarea{
+    
+    width: 85%;
+    min-height: 100px;
+    height: 50vh;
 
-    width: 95%;
-    height: 200px;
     border-radius: 15px;
-    resize:none;
+    resize: none;
+    margin: 0px auto;
     border: solid 1px #7E69DF;
-    margin-left:6px ;
-    padding: 10px;
+    padding: 20px;
     font-size: 20px;
 }
 textarea:focus{
     outline: #7E69DF solid 2px;
 }
-
-input{
-    width: 50%;
-}
-.close{
+.close-button{
     position: absolute;
-    top: 15px;
-    right: 15px;
+    right: 0px;
+    top: 0px;
+    margin: 10px;
 }
 .add{
-    position: absolute;
-    right: 25px;
-    bottom: 30px;
+    height: 60px;
+    margin: 2vh 150px 40px 150px;
+    flex-shrink: 0;
 }
 label{
     font-size: 34px;
     margin:15px;
 }
 form{
+    display: flex;
+    flex-direction: column;
+    height: 88%;
     margin: 0px;
+    width: 100%;
 }
 </style>

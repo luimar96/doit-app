@@ -43,7 +43,6 @@ input{
     border-radius: 15px;
     margin: auto 0px auto 0px;
     padding: 0px 20px 0px 20px;
-    background-color:#FAF9F8 ;
     box-shadow: 0px 3px 8px 1px #888888;
     font-size: 25px;
 }

@@ -1,6 +1,6 @@
 <template>
 	<div class="project-grid"  >
-		<ProjectItem  v-for="project in dataFromAPI" v-bind:key="project.ProjectName"  v-bind:projectData="project" />
+		<ProjectItem v-for="project in dataFromAPI" v-bind:key="project.ProjectName"  v-bind:projectData="project" />
     </div>
 </template>
 <script>

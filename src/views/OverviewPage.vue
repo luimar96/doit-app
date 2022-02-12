@@ -2,7 +2,7 @@
   <div class="app">
     <div class="grid-choices">
       <Searchbar class="searchbar"/>
-       <div @click="openAddView()">
+       <div class="add-button" @click="openAddView()">
          <AddButton class="addbutton"/>
       </div>  
     </div>
@@ -61,9 +61,8 @@ export default {
   margin-right: 25px;
 }
 
-.addbutton{
-  width: 30vw;
-  margin-left: 25px;
+.add-button{
+  width: 250px;
 }
 
 </style>
