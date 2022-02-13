@@ -1,6 +1,6 @@
 <template>
 	<div class="project-grid"  >
-		<OperatorItem  v-for="Employee in dataFromAPI" v-bind:key="Employee.EmployeeName"  v-bind:projectData="Employee" />
+		<OperatorItem v-for="Employee in dataFromAPI" v-bind:key="Employee.EmployeeName"  v-bind:projectData="Employee" />
     </div>
 </template>
 <script>
@@ -38,11 +38,4 @@ OperatorItem
     justify-content: center;
 }
 
-.grid-item{
-    margin: 2vw;
-    width: 28vw;
-    min-width: 380px;
-    height: 200px;
-    background-color: #DEDCFF;
-}
 </style>

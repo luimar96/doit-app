@@ -18,7 +18,7 @@
                         </select>
                     </div>
                     <div class="description-field">
-                        <textarea name="description" id="" cols="30" rows="10" v-model="posts.description" placeholder="Description..."></textarea>
+                        <textarea name="description" id="" cols="30" rows="10" v-model="posts.description" placeholder="Project Description..."></textarea>
                     </div>
                 </div>
                 <div class="add" type="submit" @click="toggleOpen()">
@@ -202,7 +202,7 @@ select:focus{
 .description-field{
     width: 100%;
     margin: 20px auto 20px auto;
-    height: 300px;
+    height: 280px;
 }
 textarea{
     

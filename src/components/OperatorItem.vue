@@ -1,7 +1,7 @@
 
 <template>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-     <div class="container" @click="openProjectView()" >
+     <div class="container grid-item" @click="openProjectView()" >
         <div class="dot"><i class="fa fa-folder"></i>
           <i class="fa fa-ellipsis-h" @click.stop="openEditView()" ></i>
         </div>
@@ -65,19 +65,20 @@ export default {
 }
 </script>
 <style scoped>
-.projects{
-
-}
 .container{
-    margin: 50px;
-    width: 35em;
-    height: 15em;
     border-radius:1em;
     background-color: #dedcff8e;
     box-shadow: 0px 3px 8px 1px #888888;
     display: flex;
     flex-direction: column;
     cursor: pointer;
+}
+
+.grid-item{
+    margin: 2vw;
+    width: 28vw;
+    min-width: 380px;
+    height: 200px;
 }
 .project-name{
     padding:30px;
