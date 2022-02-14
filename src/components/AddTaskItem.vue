@@ -86,8 +86,8 @@ export default {
     toggleOpen() {
       this.isOpen = !this.isOpen;
     },
-    postData() {
-      fetch("http://localhost:37164/api/tickethead/post", {
+    async postData() {
+        fetch("http://localhost:37164/api/tickethead/post", {
         method: "POST",
         body: JSON.stringify({
           TicketHeadName: this.posts.taskName,
@@ -102,7 +102,7 @@ export default {
         },
       });
       console.log("value", this.value);
-      this.getInfo();
+      setTimeout(() => { this.getInfo() }, 1000);
     },
 
     async getInfo() {
