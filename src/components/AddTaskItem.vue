@@ -24,7 +24,7 @@
         </div>
         <div class="input-field">
           <label for="">Due Date</label>
-          <input type="text" name="dueDate" v-model="posts.dueDate" />
+          <input type="date" name="dueDate" v-model="posts.dueDate" />
         </div>
         <div class="description-field">
           <label for="">Description</label>
