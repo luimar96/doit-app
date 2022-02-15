@@ -17,17 +17,19 @@
                 </div>
             </div>
 
-            <div class="column-right">     
-                <div class="project-info-box">
-                    <label for="">Customer</label>
-                    <label for="" class="info-input">Ercia</label>
-                    <label for="">Company??</label>
-                    <label for="" class="info-input">Ica</label>
-                    <label for="">Contact??</label>
-                    <label for="" class="info-input">ica support</label>
-                    <label for="">Description</label>
-                    <textarea class="description" cols="30" rows="10" v-model="description"></textarea>
-                </div>                           
+            <div class="column-right">             
+                    <div @click="toggleOpen()">
+                        <CloseButtton/>
+                    </div>
+                     <div @click="openAddNewTask()">
+                        <AddButton/>
+                    </div>
+                        <div class="project-info-box">
+                                <label for="">Customer</label>
+                                <label for="" class="info-input" v-for="cust in customer"  v-bind:key="cust.CustomerName" >{{cust.CustomerName}}</label>                                                            
+                                <label for="">Description</label>
+                                <textarea class="description" cols="30" rows="10" v-model="description"></textarea>
+                        </div>                           
             </div>
         </div>
     </div>   
@@ -61,9 +63,11 @@ export default {
   },
   data:() => ({
         url: `http://localhost:37164/api/tickethead/getbyproject/`,
+        customerUrl: `http://localhost:37164/api/Customer/getbyid/`,
         tasks: [],
         isOpen:false,
-        description:""
+        description:"",
+        customer:{}
     }),
      async mounted(){
         console.log(this.url)
@@ -74,22 +78,40 @@ export default {
         );
 
         const data = await response.json();
-        console.log("data from task:",data);
         this.tasks = data;
         this.description = this.projectData.Description
+         this.GetCustomer();
+
+       
+  },
+  activated(){
+   
+
   },
    methods:{
        toggleOpen(){
             this.isOpen = !this.isOpen;
             
+            
+            
         },
         openAddNewTask(){
              this.isOpen = true;
              this.$refs.modal.toggleOpen();
-              console.log("opening add new task");
-        }
+        },
+        async GetCustomer(){
+        let response;
+        response = await fetch(
+        this.customerUrl + this.projectData.CustomerId
+        );
+
+        const data = await response.json();
+        this.customer = data;
+
+    },
        
-  }
+  },
+   
 }
 </script>
 <style scoped>
