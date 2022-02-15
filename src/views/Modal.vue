@@ -9,7 +9,7 @@
         
         <div class="columns">
             <div class="column-left">
-                <div class="add-button">
+                <div class="add-button" @click="openAddNewTask()">
                     <AddButton/>
                 </div>
                 <div class="task-list">
@@ -18,18 +18,12 @@
             </div>
 
             <div class="column-right">             
-                    <div @click="toggleOpen()">
-                        <CloseButtton/>
-                    </div>
-                     <div @click="openAddNewTask()">
-                        <AddButton/>
-                    </div>
-                        <div class="project-info-box">
-                                <label for="">Customer</label>
-                                <label for="" class="info-input" v-for="cust in customer"  v-bind:key="cust.CustomerName" >{{cust.CustomerName}}</label>                                                            
-                                <label for="">Description</label>
-                                <textarea class="description" cols="30" rows="10" v-model="description"></textarea>
-                        </div>                           
+                <div class="project-info-box">
+                    <label for="">Customer</label>
+                    <label for="" class="info-input" v-for="cust in customer"  v-bind:key="cust.CustomerName" >{{cust.CustomerName}}</label>                                                            
+                    <label for="">Description</label>
+                    <textarea class="description" cols="30" rows="10" v-model="description"></textarea>
+                </div>                           
             </div>
         </div>
     </div>   
