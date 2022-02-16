@@ -83,6 +83,7 @@ export default {
     employees: {},
   }),
   methods: {
+    
     toggleOpen() {
       this.isOpen = !this.isOpen;
     },
@@ -147,7 +148,7 @@ export default {
       employeestemp.push(employeename);
     }
     this.employees = employeestemp;
-    console.log("employees array: ", this.employees);
+
   },
 };
 </script>

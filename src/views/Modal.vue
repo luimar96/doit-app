@@ -37,10 +37,10 @@
             </div>
         </div>
     </div>   
-</div>
 <transition name="fade" apper>
     <AddTaskItem v-bind:projectData="projectData" ref="modal"/>
 </transition>
+</div>
 
 </template>
 <script>
