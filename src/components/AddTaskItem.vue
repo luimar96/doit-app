@@ -311,4 +311,10 @@ h1{
   background-color: #beb3ee;
   background: #beb3ee;
 }
+.multiselect:focus{
+  outline: none;
+}
+.multiselect.is-active{
+  box-shadow: none;
+}
 </style>
