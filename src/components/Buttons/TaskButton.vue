@@ -1,4 +1,5 @@
 <template>
+<div>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <button class="task" @click="openEditTask()">
@@ -7,6 +8,7 @@
   <transition name="fade" apper>
     <EditTask v-bind:task="taskdata" ref="modal"/>   
   </transition> 
+  </div>
 </template>
 
 <script>

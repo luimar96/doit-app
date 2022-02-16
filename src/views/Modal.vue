@@ -13,16 +13,26 @@
                     <AddButton/>
                 </div>
                 <div class="task-list">
-                    <TaskButton v-for="task in tasks" v-bind:key="task.TicketHeadName"  v-bind:taskdata="task" />
+                    <TaskButton class="task-button" v-for="task in tasks" v-bind:key="task.TicketHeadName"  v-bind:taskdata="task" />
                 </div>
             </div>
 
             <div class="column-right">             
                 <div class="project-info-box">
-                    <label for="">Customer</label>
-                    <label for="" class="info-input" v-for="cust in customer"  v-bind:key="cust.CustomerName" >{{cust.CustomerName}}</label>                                                            
-                    <label for="">Description</label>
-                    <textarea class="description" cols="30" rows="10" v-model="description"></textarea>
+                    <div class="category-container">
+                        <label class="label">Project</label>
+                        <label class="project-name-output">{{name}}</label>  
+                        <hr>                                                         
+                    </div>
+                    <div class="category-container">
+                        <label class="label">Customer</label>
+                        <label  class="customer-output" >{{customer.CustomerName}}</label>       
+                        <hr>                                                     
+                    </div>
+                    <div class="category-container">
+                        <label class="label" >Description</label>
+                        <p class="description-output">{{description}}</p>
+                    </div>
                 </div>                           
             </div>
         </div>
@@ -60,6 +70,7 @@ export default {
         customerUrl: `http://localhost:37164/api/Customer/getbyid/`,
         tasks: [],
         isOpen:false,
+        name: "",
         description:"",
         customer:{}
     }),
@@ -73,6 +84,7 @@ export default {
 
         const data = await response.json();
         this.tasks = data;
+        this.name = this.projectData.ProjectName
         this.description = this.projectData.Description
          this.GetCustomer();
 
@@ -100,7 +112,8 @@ export default {
         );
 
         const data = await response.json();
-        this.customer = data;
+        console.log("customer!",data.response);
+        this.customer = data[0];
 
     },
        
@@ -156,33 +169,41 @@ export default {
     display: flex;
 }
 
-.column-right{   
-    width:40%;   
-    margin: auto;
-    height: 85%;
-    padding: 20px;
-}
 .column-left{
     width:60%;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
     
+}
+
+
+.column-right{   
+    width:40%;   
+    margin: 62px auto 0px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .task-list{
     width: 90%;
     margin: auto;
-    height: 80%;
+    margin-bottom: 5vh;
     padding: 20px;
     border-top: solid #beb3ee 1px;
     border-bottom: solid #beb3ee 1px;
     overflow-y: auto;
     overflow-x: hidden;
+    flex-grow: 1;
 }
 
 .add-button{
     margin: auto;
     width: 85%;
     padding: 0px 20px 20px 20px;
+    flex-shrink: 0;
+    flex-grow: 0;
 }
 
 .close-button{
@@ -194,12 +215,50 @@ export default {
 .project-info-box{
     display: flex;
     flex-direction: column;
-    height: 38em;
-    margin: 10px;
-    margin-bottom: 20px;
-    border:5px;
-    border: 1px solid #7E69DF;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 5vh;
+    padding: 20px;
+    border: solid #beb3ee 1px;
+    border-radius: 5px;
+    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-grow: 1;
 }
+
+.category-container{
+    border-bottom: solid #beb3ee 1px;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.project-name-output{
+    padding-left: 15px;
+    margin: 0px;
+}
+
+.customer-output{
+    padding-left: 15px;
+    margin: 0px;
+}
+
+.description-output{
+    padding-left: 15px;
+    margin: 0px;
+    font-size: 25px;
+    padding-bottom: 20px;
+    color: black;
+}
+
+.label{
+    font-size: 25px;
+    opacity: 0.60;
+    margin: 0px;
+}
+
 .customer-input{
     border-bottom: 1px solid black;
 }
