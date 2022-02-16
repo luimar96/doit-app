@@ -28,7 +28,7 @@ export default {
   methods:{
      openEditTask(){
               this.isOpen = true;
-             this.$refs.modal.toggleOpen();
+              this.$refs.modal.toggleOpen();
         }
 
   }

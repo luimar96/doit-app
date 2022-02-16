@@ -1,42 +1,46 @@
 <template>
   <div class="vue-modal" v-show="isOpen">
-    <div class="content">
-      <div class="close" @click="toggleOpen()">
+    <div class="backdrop" @click="toggleOpen()"></div>
+    <div class="modal-content">
+      <h1>Add Task</h1>
+      <div class="close-button" @click="toggleOpen()">
         <close-button></close-button>
       </div>
-      <h1>Add Task</h1>
-      <form @submit.prevent="postData" method="post">
-        <div class="input-field">
-          <label for="">Task Name</label>
-          <input type="text" name="tasktName" v-model="posts.taskName" />
-        </div>
+      <form class="form" @submit.prevent="postData" method="post">
+        <div class="inputs">
 
-        <div class="input-field">
-          <label class="typo__label">Select Employees</label>
-          <Multiselect
-            v-model="value"
-            mode="tags"
-            placeholder="Assign Employees"
-            :options="employees"
-            :search="true"
-            class="multiselect"
-          />
+          <div class="input-field">
+            <input type="text" name="tasktName" v-model="posts.taskName" placeholder="Task Name..."/>
+          </div>
+
+          <div class="input-field">
+            <Multiselect
+              v-model="value"
+              mode="tags"
+              placeholder="Assign Employees"
+              :options="employees"
+              :search="true"
+              class="multiselect"
+            />
+          </div>
+
+          <div class="input-field">
+            <label class="label">Due Date</label>
+            <input type="date" name="dueDate" v-model="posts.dueDate"/>
+          </div>
+
+            <div class="input-field">
+              <textarea
+                name="description"
+                placeholder="Task Description..."
+                id=""
+                cols="30"
+                rows="10"
+                v-model="posts.description">
+              </textarea>
+          </div>
         </div>
-        <div class="input-field">
-          <label for="">Due Date</label>
-          <input type="date" name="dueDate" v-model="posts.dueDate" />
-        </div>
-        <div class="description-field">
-          <label for="">Description</label>
-          <textarea
-            name="description"
-            id=""
-            cols="30"
-            rows="10"
-            v-model="posts.description"
-          ></textarea>
-        </div>
-        <div class="addbutton" type="submit">
+        <div class="add" type="submit">
           <add-button></add-button>
         </div>
       </form>
@@ -152,32 +156,118 @@ export default {
 };
 </script>
 <style src="@vueform/multiselect/themes/default.css"></style>
-<style>
-.multiselect {
-  width: 53%;
-  margin: 0;
-  height: 80px;
-  border: #7e69df solid 1px;
-  border-radius: 15px;
-  box-shadow: 0px 3px 8px 1px #888888;
-  font-size: 25px;
+<style scoped>
+.vue-modal{
+    position: -webkit-sticky;
+    top: 0px;
+    bottom: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 11;
 }
-.multiselect-tag {
-  font-size: 25px;
-  padding: 1rem;
-  background: #9c8beb;
+.backdrop{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color:rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+.modal-content{  
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 70vw;
+    min-width: 400px;
+    max-width: 850px;
+    height: 90%;
+    min-height: 100px;
+    max-height: 750px;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 20px;
+    position: relative;
+    z-index: 11;
+
 }
 
-.vue-modal {
-  z-index: 1;
+.form{
+    display: flex;
+    flex-direction: column;
+    height: 88%;
+    margin: 0px;
+    width: 100%;
+    margin-left: 0px;
 }
-.content {
-  width: 100em;
-  height: 60rem;
-  background-color: white;
-  border-radius: 5px;
-  position: relative;
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: solid #beb3ee 1px;
+    border-bottom: solid #beb3ee 1px;
+    margin: 0px auto;
+    width: 85%;
+    height: 90%;
+    overflow: auto;
+    overflow-x: hidden;
+    flex-shrink: 1;
 }
+
+.label{
+    padding-left: 35px;
+    font-size: 25px;
+    opacity: 0.80;
+    margin: 0px;
+}
+
+.input-field{
+    display:flex;
+    flex-direction: column;
+    margin: 20px 0px;
+}
+
+.input-field > input{
+    box-shadow: none;
+    width: 85%;
+    margin: 0px auto;
+    height: 7vh;
+    min-height: 50px;
+    max-height: 70px;
+}
+
+.input-field > textarea{
+    width: 85%;
+    margin: 0px auto;
+    border-radius: 15px;
+    min-height: 100px;
+    max-height: 250px;
+    resize: none;
+    padding: 20px;
+    font-size: 20px;
+}
+textarea:focus{
+    outline: #7E69DF solid 2px;
+}
+
+.add{
+    height: 60px;
+    margin: 2vh 150px 40px 150px;
+    flex-shrink: 0;
+}
+
+.multiselect {
+  width: 90%;
+  margin: auto;
+  height: 60px;
+  padding: 20px;
+  border: #7e69df solid 1px;
+  border-radius: 15px 15px 0px 0px;
+  font-size: 25px;
+}
+
 .status-btn {
   font-size: 20px;
   width: 242px;
@@ -188,6 +278,19 @@ export default {
   box-shadow: 0px 3px 8px 1px #888888;
   cursor: pointer;
 }
+
+h1{
+    text-align: center;
+    font-size:48px;
+    opacity: 70%;
+    margin: 2vh 0px;
+}
+.close-button{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin: 10px;
+}
 .fa-plus {
   font-size: 4em;
   opacity: 50%;
@@ -197,5 +300,15 @@ export default {
 }
 .status-btn:active {
   transform: translateY(4px);
+}
+</style>
+
+<style>
+.multiselect-tag {
+  font-size: 15px;
+  padding: 5px;
+  padding-left: 15px;
+  background-color: #beb3ee;
+  background: #beb3ee;
 }
 </style>
