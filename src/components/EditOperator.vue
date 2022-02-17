@@ -13,10 +13,13 @@
                             <label class="label" for="">Operator Name</label>
                             <input type="text" name="projectName" v-model="employeeName" placeholder="Project Name...">
                         </div>
-                        <div class="input-field">
-                            <label class="label" for="">Department</label>   
-                              <input type="text" v-model="department" >             
-                        </div>     
+                        <div class="dropdown">
+                        <label class="customerLabel">Department</label>
+                        <select v-model="department">
+                            <option v-for="department in departments" v-bind:key="department.DepartmentId" :value="department.DepartmentId">{{ department.DepartmentName }}</option> 
+                        </select>
+                    </div>
+                      
                     </div>       
                     <div class="button-container">
                         <div class="delete" @click="deleteoperator()">
@@ -52,6 +55,8 @@ export default {
     },
     data:() => ({
         url: `http://localhost:37164/api/Employee/put`,
+        getDepartment:`http://localhost:37164/api/department`,
+        departments:[],
         employeeName: "",
         department:"",
         dateOfjoinging:"",
@@ -93,7 +98,13 @@ export default {
         }
     },
     async mounted(){
-       
+        let response;
+        response = await fetch(
+        this.getDepartment
+        );
+
+        const data = await response.json();
+        this.departments = data;
 
     },
 }
@@ -172,6 +183,11 @@ h1{
     height: 7vh;
     min-height: 50px;
     max-height: 70px;
+}
+.customerLabel{
+    padding-left: 35px;
+    font-size: 25px;
+    opacity: 0.80;
 }
 
 .dropdown{
