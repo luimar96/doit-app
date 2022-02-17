@@ -200,6 +200,8 @@ select:focus{
 }
 
 .description-field{
+    display: flex;
+    flex-direction: column;
     width: 100%;
     margin: 20px auto 20px auto;
     height: 280px;

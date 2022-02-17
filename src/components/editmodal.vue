@@ -21,7 +21,7 @@
                         </div>
                         <div class="description-field">
                             <label class="label" for="">Description</label>
-                            <textarea name="description" id="" cols="30" rows="10" v-model="description" placeholder="Project Description..."></textarea>
+                            <textarea class="description" name="description" id="" cols="30" rows="10" v-model="description" placeholder="Project Description..."></textarea>
                         </div>       
                     </div>       
                     <div class="button-container">
@@ -210,12 +210,13 @@ select:focus{
 }
 
 .description-field{
+    display: flex;
+    flex-direction: column;
     width: 100%;
     margin: 20px auto 20px auto;
     height: 280px;
 }
-textarea{
-    
+.description{
     width: 85%;
     min-height: 100px;
     height: 50vh;
@@ -227,7 +228,7 @@ textarea{
     padding: 20px;
     font-size: 20px;
 }
-textarea:focus{
+.description:focus{
     outline: #7E69DF solid 2px;
 }
 

@@ -126,7 +126,7 @@ export default {
         this.employeeId = data;
         this.postTicket();
       }
-      this.$router.go();
+      //this.$router.go();
     },
     postTicket() {
       fetch("http://localhost:37164/api/ticket/post", {
@@ -245,6 +245,7 @@ export default {
     border-radius: 15px;
     min-height: 100px;
     max-height: 250px;
+    border: #7E69DF solid 1px;
     resize: none;
     padding: 20px;
     font-size: 20px;

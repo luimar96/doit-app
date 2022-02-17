@@ -124,7 +124,6 @@ export default {
 <style scoped>
 
 .vue-modal{
-    position: -webkit-sticky;
     top: 0px;
     bottom: 0px;
     width: 100vw;

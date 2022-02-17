@@ -81,4 +81,11 @@ body{
     box-shadow: rgba(0,0,0,0.3);
 }
 
+.vue-modal{
+      position: fixed;
+    padding: var(--gap);
+    box-sizing: border-box;
+    --gap: 15px;
+    left: 0;
+}
 </style>
