@@ -236,11 +236,13 @@ export default {
 
 .project-name-output{
     padding-left: 15px;
+    font-size: 30px;
     margin: 0px;
 }
 
 .customer-output{
     padding-left: 15px;
+    font-size: 30px;
     margin: 0px;
 }
 
