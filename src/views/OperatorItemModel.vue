@@ -19,10 +19,6 @@
                     <label for="">UserName</label>
                     <input type="text"  name="UserName" v-model="posts.UserName">
                 </div>
-                <div class="input-field">
-                    <label for="">DateOfJoining</label>
-                    <input type="Date"  name="DateOfJoining" v-model="posts.DateOfJoining">
-                </div>
                  <div class="input-field">
                     <label for="">Password</label>
                     <input type="password"  name="Password" v-model="posts.Password">
@@ -56,15 +52,13 @@ export default {
         url: `http://localhost:37164/api/Employee/`,
         //dataFromAPI: [],
        posts: {
-           EmployeeName:null,
-           DateOfJoining: null,
+           EmployeeName:null,       
            PhotoFileName: null,
            DepartmentId: null,
            UserName: null,
            Password: null,
-
-
-       },
+       }, 
+       DateOfJoining: new Date().toLocaleDateString(),
        isOpen:false
     }),
     methods: {
@@ -77,10 +71,11 @@ export default {
                 method: 'POST',
                 body: JSON.stringify({
 
-                    customer: this.posts.EmployeeName,
+                    EmployeeName: this.posts.EmployeeName,
+                    DateOfJoining:this.DateOfJoining,
                     UserName: this.posts.UserName,
                     Password: this.posts.Password,
-                    DepartmentId: this.posts.DepartmentId,
+                    Department: this.posts.DepartmentId,
                     PhotoFileName: this.posts.PhotoFileName,
                 }),
 
@@ -89,7 +84,7 @@ export default {
                 },
 
 
-            }).then(this.$router.go());
+            }).then(location.reload());
         },
 
 
