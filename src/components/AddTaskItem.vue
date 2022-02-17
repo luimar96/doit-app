@@ -126,7 +126,7 @@ export default {
         this.employeeId = data;
         this.postTicket();
       }
-      //this.$router.go();
+      this.$router.go();
     },
     postTicket() {
       fetch("http://localhost:37164/api/ticket/post", {
