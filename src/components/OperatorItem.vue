@@ -1,5 +1,6 @@
 
 <template>
+<div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <div class="container grid-item" @click="openProjectView()" >
         <div class="dot"><i class="fa fa-folder"></i>
@@ -9,6 +10,7 @@
                <p>{{projectData.EmployeeName}} </p>
         </div>
     </div>
+    
          <transition name="fade" apper>
           <Editmodal v-bind:projectData="EmployeeName" ref="modal"/>
         </transition>
@@ -21,7 +23,7 @@
     </transition>
 
 
-
+</div>
 </template>
 <script>
 import {ref} from "vue"
