@@ -7,44 +7,36 @@
           <i class="fa fa-ellipsis-h" @click.stop="openEditView()" ></i>
         </div>
         <div class="project-name">
-               <p>{{projectData.EmployeeName}} </p>
+               <p>{{EmployeeData.EmployeeName}} </p>
         </div>
     </div>
-    
-         <transition name="fade" apper>
-          <Editmodal v-bind:projectData="EmployeeName" ref="modal"/>
-        </transition>
-
-
+  <div>
     <transition name="fade" apper>
-    <modal :open="isOpen" @close="isOpen = !isOpen">
-      <p>Lorem ipsumaihgirgpwgjrowjrophgwrhhrwhrwhrwwrhwrhrhw</p>
-    </modal>
+      <EditOperator v-bind:EmployeeData="EmployeeData" ref="modal"/>
     </transition>
-
-
+  </div>       
+  <div>
+    <transition name="fade" apper>
+      <OperatorTaskView v-bind:EmployeeData="EmployeeData" ref="modal2"/>      
+    </transition>   
+  </div>   
 </div>
 </template>
 <script>
-import {ref} from "vue"
-import Modal from "../views/Modal.vue"
-import Editmodal from "../components/editmodal.vue"
+import EditOperator from "../components/EditOperator.vue"
+import OperatorTaskView from "../components/operatorTaskView.vue"
 export default {
     props: {
-        projectData :{
+        EmployeeData :{
             type: Object,
             default: () => ({}),
         }
 
     },
-     setup () {
-      const isOpen = ref(false)
-
-      return { isOpen }
-    },
+    
     components: {
-        Modal,
-        Editmodal
+        EditOperator,
+        OperatorTaskView
 
     },
     data: () =>({
@@ -58,6 +50,7 @@ export default {
       },
       openProjectView(){
         this.isOpen = true;
+         this.$refs.modal2.toggleOpen();
       console.log("openprojectview")
 
       }

@@ -1,6 +1,6 @@
 <template>
 	<div class="project-grid"  >
-		<OperatorItem v-for="Employee in dataFromAPI" v-bind:key="Employee.EmployeeName"  v-bind:projectData="Employee" />
+		<OperatorItem v-for="Employee in dataFromAPI" v-bind:key="Employee.EmployeeName"  v-bind:EmployeeData="Employee" />
     </div>
 </template>
 <script>
@@ -11,7 +11,7 @@ export default ({
 OperatorItem
     },
      data:() => ({
-        url: `http://localhost:37164/api/Employee/`,
+        url: `http://localhost:37164/api/Employee/GetAllEmployee`,
         dataFromAPI: [],
     }),
      async mounted(){
@@ -19,7 +19,7 @@ OperatorItem
     let response;
 
     response = await fetch(
-      this.url + `get`
+      this.url
       );
 
     const data = await response.json();
